@@ -10,10 +10,10 @@ import { ClienteService } from '../cliente.service';
 })
 export class CriarClienteComponent implements OnInit {
 
-  employee: Cliente = new Cliente();
+  cliente: Cliente = new Cliente();
   submitted = false;
 
-  constructor(private employeeService: ClienteService,
+  constructor(private service: ClienteService,
     private router: Router) { }
 
   ngOnInit() {
@@ -21,13 +21,13 @@ export class CriarClienteComponent implements OnInit {
 
   newEmployee(): void {
     this.submitted = false;
-    this.employee = new Cliente();
+    this.cliente = new Cliente();
   }
 
   save() {
-    this.employeeService.criarCliente(this.employee)
+    this.service.criarCliente(this.cliente)
       .subscribe(data => console.log(data), error => console.log(error));
-    this.employee = new Cliente();
+    this.cliente = new Cliente();
     this.gotoList();
   }
 
@@ -37,6 +37,6 @@ export class CriarClienteComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/employees']);
+    this.router.navigate(['/clientes']);
   }
 }

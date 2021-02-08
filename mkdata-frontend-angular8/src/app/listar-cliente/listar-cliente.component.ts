@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
 })
 export class ListarClienteComponent implements OnInit {
 
-  employees: Observable<Cliente[]>;
+  clientes: Observable<Cliente[]>;
 
-  constructor(private employeeService: ClienteService,
+  constructor(private service: ClienteService,
     private router: Router) {}
 
   ngOnInit() {
@@ -22,11 +22,11 @@ export class ListarClienteComponent implements OnInit {
   }
 
   reloadData() {
-    this.employees = this.employeeService.getClientesLista();
+    this.clientes = this.service.getClientesLista();
   }
 
-  deleteEmployee(id: number) {
-    this.employeeService.deletarCliente(id)
+  apagarCliente(id: number) {
+    this.service.deletarCliente(id)
       .subscribe(
         data => {
           console.log(data);
@@ -35,7 +35,7 @@ export class ListarClienteComponent implements OnInit {
         error => console.log(error));
   }
 
-  employeeDetails(id: number){
+  detalharCliente(id: number){
     this.router.navigate(['details', id]);
   }
 }

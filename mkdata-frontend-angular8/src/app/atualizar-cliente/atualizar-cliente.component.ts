@@ -11,35 +11,35 @@ import { ClienteService } from '../cliente.service';
 export class AtualizarClienteComponent implements OnInit {
 
   id: number;
-  employee: Cliente;
+  cliente: Cliente;
 
   constructor(private route: ActivatedRoute,private router: Router,
-    private employeeService: ClienteService) { }
+    private service: ClienteService) { }
 
   ngOnInit() {
-    this.employee = new Cliente();
+    this.cliente = new Cliente();
 
     this.id = this.route.snapshot.params['id'];
 
-    this.employeeService.getCliente(this.id)
+    this.service.getCliente(this.id)
       .subscribe(data => {
         console.log(data)
-        this.employee = data;
+        this.cliente = data;
       }, error => console.log(error));
   }
 
-  updateEmployee() {
-    this.employeeService.atualizarCliente(this.id, this.employee)
+  atualizarCliente() {
+    this.service.atualizarCliente(this.id, this.cliente)
       .subscribe(data => console.log(data), error => console.log(error));
-    this.employee = new Cliente();
+    this.cliente = new Cliente();
     this.gotoList();
   }
 
   onSubmit() {
-    this.updateEmployee();
+    this.atualizarCliente();
   }
 
   gotoList() {
-    this.router.navigate(['/employees']);
+    this.router.navigate(['/clientes']);
   }
 }
