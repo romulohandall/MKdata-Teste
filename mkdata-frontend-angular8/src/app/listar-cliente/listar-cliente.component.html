@@ -13,12 +13,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let employee of employees | async">
-            <td>{{employee.firstName}}</td>
-            <td>{{employee.lastName}}</td>
-            <td>{{employee.emailId}}</td>
-            <td><button (click)="apagarCliente(employee.id)" class="btn btn-danger">Delete</button>
-                <button (click)="detalharCliente(employee.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+          <tr *ngFor="let cliente of clientes | async">
+            <td>{{cliente.firstName}}</td>
+            <td>{{cliente.lastName}}</td>
+            <td>{{cliente.emailId}}</td>
+            <td><button (click)="apagarCliente(cliente.id)" class="btn btn-danger">Apagar</button>
+                <button (click)="detalharCliente(cliente.id)" class="btn btn-info" style="margin-left: 10px">Detalhar</button>
             </td>
           </tr>
         </tbody>
