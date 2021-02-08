@@ -28,47 +28,47 @@ import net.guides.springboot2.springboot2jpacrudexample.repository.ClienteReposi
 @RequestMapping("/api/v1")
 public class ClienteController {
 	@Autowired
-	private ClienteRepository employeeRepository;
+	private ClienteRepository repository;
 
 	@GetMapping("/clientes")
-	public List<Cliente> getAllEmployees() {
-		return employeeRepository.findAll();
+	public List<Cliente> getAllClientes() {
+		return repository.findAll();
 	}
 
 	@GetMapping("/clientes/{id}")
-	public ResponseEntity<Cliente> getEmployeeById(@PathVariable(value = "id") Long employeeId)
+	public ResponseEntity<Cliente> getClientesById(@PathVariable(value = "id") Long idCliente)
 			throws ResourceNotFoundException {
-		Cliente cliente = employeeRepository.findById(employeeId)
-				.orElseThrow(() -> new ResourceNotFoundException("cliente not found for this id :: " + employeeId));
+		Cliente cliente = repository.findById(idCliente)
+				.orElseThrow(() -> new ResourceNotFoundException("cliente not found for this id :: " + idCliente));
 		return ResponseEntity.ok().body(cliente);
 	}
 
 	@PostMapping("/clientes")
 	public Cliente createEmployee(@Valid @RequestBody Cliente cliente) {
 
-		return employeeRepository.save(cliente);
+		return repository.save(cliente);
 	}
 
 	@PutMapping("/clientes/{id}")
-	public ResponseEntity<Cliente> updateEmployee(@PathVariable(value = "id") Long employeeId,
-												  @Valid @RequestBody Cliente employeeDetails) throws ResourceNotFoundException {
-		Cliente cliente = employeeRepository.findById(employeeId)
-				.orElseThrow(() -> new ResourceNotFoundException("cliente not found for this id :: " + employeeId));
+	public ResponseEntity<Cliente> updateEmployee(@PathVariable(value = "id") Long idCliente,
+												  @Valid @RequestBody Cliente clienteDetails) throws ResourceNotFoundException {
+		Cliente cliente = repository.findById(idCliente)
+				.orElseThrow(() -> new ResourceNotFoundException("cliente not found for this id :: " + idCliente));
 
-		cliente.setEmailId(employeeDetails.getEmailId());
-		cliente.setLastName(employeeDetails.getLastName());
-		cliente.setFirstName(employeeDetails.getFirstName());
-		final Cliente updatedEmployee = employeeRepository.save(cliente);
+		cliente.setEmailId(clienteDetails.getEmailId());
+		cliente.setLastName(clienteDetails.getLastName());
+		cliente.setFirstName(clienteDetails.getFirstName());
+		final Cliente updatedEmployee = repository.save(cliente);
 		return ResponseEntity.ok(updatedEmployee);
 	}
 
 	@DeleteMapping("/clientes/{id}")
-	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId)
+	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long idCliente)
 			throws ResourceNotFoundException {
-		Cliente cliente = employeeRepository.findById(employeeId)
-				.orElseThrow(() -> new ResourceNotFoundException("cliente not found for this id :: " + employeeId));
+		Cliente cliente = repository.findById(idCliente)
+				.orElseThrow(() -> new ResourceNotFoundException("cliente not found for this id :: " + idCliente));
 
-		employeeRepository.delete(cliente);
+		repository.delete(cliente);
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("deleted", Boolean.TRUE);
 		return response;
