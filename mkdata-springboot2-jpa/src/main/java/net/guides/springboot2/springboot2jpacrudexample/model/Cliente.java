@@ -9,18 +9,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "clientes")
-public class Employee {
+public class Cliente {
 
 	private long id;
 	private String firstName;
 	private String lastName;
 	private String emailId;
 	
-	public Employee() {
+	public Cliente() {
 		
 	}
 	
-	public Employee(String firstName, String lastName, String emailId) {
+	public Cliente(String firstName, String lastName, String emailId) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailId = emailId;
