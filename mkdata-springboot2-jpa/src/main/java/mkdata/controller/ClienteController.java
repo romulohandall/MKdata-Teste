@@ -1,5 +1,6 @@
-package net.guides.springboot2.springboot2jpacrudexample.controller;
+package mkdata.controller;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 
 import java.util.List;
@@ -19,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import net.guides.springboot2.springboot2jpacrudexample.exception.ResourceNotFoundException;
-import net.guides.springboot2.springboot2jpacrudexample.model.Cliente;
-import net.guides.springboot2.springboot2jpacrudexample.repository.ClienteRepository;
+import mkdata.exception.ResourceNotFoundException;
+import mkdata.model.Cliente;
+import mkdata.repository.ClienteRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -55,9 +56,15 @@ public class ClienteController {
 		Cliente cliente = repository.findById(idCliente)
 				.orElseThrow(() -> new ResourceNotFoundException("cliente not found for this id :: " + idCliente));
 
-		cliente.setEmailId(clienteDetails.getEmailId());
-		cliente.setLastName(clienteDetails.getLastName());
-		cliente.setFirstName(clienteDetails.getFirstName());
+		cliente.setNome(clienteDetails.getNome());
+		cliente.setTipo(clienteDetails.getTipo());
+		cliente.setNuCpf(clienteDetails.getNuCpf());
+		cliente.setNuRg(clienteDetails.getNuRg());
+		cliente.setDataCadastro(new Timestamp(System.currentTimeMillis()));
+		cliente.setStAtivo(clienteDetails.isStAtivo());
+		cliente.setEmail(cliente.getEmail());
+		cliente.setTelefones(clienteDetails.getTelefones());
+
 		final Cliente updatedEmployee = repository.save(cliente);
 		return ResponseEntity.ok(updatedEmployee);
 	}
