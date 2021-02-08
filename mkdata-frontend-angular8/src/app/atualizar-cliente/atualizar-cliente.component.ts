@@ -1,27 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../employee';
+import { Cliente } from '../cliente';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EmployeeService } from '../employee.service';
+import { ClienteService } from '../cliente.service';
 
 @Component({
   selector: 'app-update-employee',
-  templateUrl: './update-employee.component.html',
-  styleUrls: ['./update-employee.component.css']
+  templateUrl: './atualizar-cliente.component.html',
+  styleUrls: ['./atualizar-cliente.component.css']
 })
-export class UpdateEmployeeComponent implements OnInit {
+export class AtualizarClienteComponent implements OnInit {
 
   id: number;
-  employee: Employee;
+  employee: Cliente;
 
   constructor(private route: ActivatedRoute,private router: Router,
-    private employeeService: EmployeeService) { }
+    private employeeService: ClienteService) { }
 
   ngOnInit() {
-    this.employee = new Employee();
+    this.employee = new Cliente();
 
     this.id = this.route.snapshot.params['id'];
-    
-    this.employeeService.getEmployee(this.id)
+
+    this.employeeService.getCliente(this.id)
       .subscribe(data => {
         console.log(data)
         this.employee = data;
@@ -29,14 +29,14 @@ export class UpdateEmployeeComponent implements OnInit {
   }
 
   updateEmployee() {
-    this.employeeService.updateEmployee(this.id, this.employee)
+    this.employeeService.atualizarCliente(this.id, this.employee)
       .subscribe(data => console.log(data), error => console.log(error));
-    this.employee = new Employee();
+    this.employee = new Cliente();
     this.gotoList();
   }
 
   onSubmit() {
-    this.updateEmployee();    
+    this.updateEmployee();
   }
 
   gotoList() {

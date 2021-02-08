@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Observable } from "rxjs";
-import { EmployeeService } from "../employee.service";
-import { Employee } from "../employee";
+import { ClienteService } from "../cliente.service";
+import { Cliente } from "../cliente";
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-employee-list',
-  templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.css']
+  selector: 'app-listar-cliente',
+  templateUrl: './listar-cliente.component.html',
+  styleUrls: ['./listar-cliente.component.css']
 })
-export class EmployeeListComponent implements OnInit {
+export class ListarClienteComponent implements OnInit {
 
-  employees: Observable<Employee[]>;
+  employees: Observable<Cliente[]>;
 
-  constructor(private employeeService: EmployeeService,
+  constructor(private employeeService: ClienteService,
     private router: Router) {}
 
   ngOnInit() {
@@ -22,11 +22,11 @@ export class EmployeeListComponent implements OnInit {
   }
 
   reloadData() {
-    this.employees = this.employeeService.getEmployeesList();
+    this.employees = this.employeeService.getClientesLista();
   }
 
   deleteEmployee(id: number) {
-    this.employeeService.deleteEmployee(id)
+    this.employeeService.deletarCliente(id)
       .subscribe(
         data => {
           console.log(data);

@@ -5,28 +5,28 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class EmployeeService {
-  private baseUrl = 'http://localhost:8080/springboot-crud-rest/api/v1/employees';
+export class ClienteService {
+  private baseUrl = 'http://localhost:8080/springboot-crud-rest/api/v1/clientes';
 
   constructor(private http: HttpClient) { }
 
-  getEmployee(id: number): Observable<any> {
+  getCliente(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  createEmployee(employee: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, employee);
+  criarCliente(cliente: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, cliente);
   }
 
-  updateEmployee(id: number, value: any): Observable<Object> {
+  atualizarCliente(id: number, value: any): Observable<Object> {
     return this.http.put(`${this.baseUrl}/${id}`, value);
   }
 
-  deleteEmployee(id: number): Observable<any> {
+  deletarCliente(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 
-  getEmployeesList(): Observable<any> {
+  getClientesLista(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
 }
