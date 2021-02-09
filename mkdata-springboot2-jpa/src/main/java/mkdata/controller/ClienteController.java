@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -47,7 +48,12 @@ public class ClienteController {
 	@PostMapping("/clientes")
 	public Cliente criarCliente(@Valid @RequestBody Cliente cliente) {
 
-		return repository.save(cliente);
+		Cliente jaExisteCliente = repository.findByCpf(cliente.getNuCpf());
+		if(jaExisteCliente!= null){
+			return null;
+		}else{
+			return repository.save(cliente);
+		}
 	}
 
 	@PutMapping("/clientes/{id}")
@@ -90,6 +96,19 @@ public class ClienteController {
 		}else{
 			return ResponseEntity.notFound().build();
 		}
+
+	}
+
+	@GetMapping("/clientes/cpf/{cpf}")
+	public ResponseEntity<?> getClienteByCPF(@PathVariable(value = "cpf") Long cpf)
+			throws ResourceNotFoundException {
+		Cliente cliente = repository.findByCpf(cpf);
+		if(cliente!= null){
+			return ResponseEntity.ok().body(cliente);
+		}else{
+			return ResponseEntity.notFound().build();
+		}
+
 
 	}
 }
