@@ -80,4 +80,16 @@ public class ClienteController {
 		response.put("deleted", Boolean.TRUE);
 		return response;
 	}
+
+	@GetMapping("/clientes/nome/{nome}")
+	public ResponseEntity<List<Cliente>> getClientesByName(@PathVariable(value = "nome") String nome)
+			throws ResourceNotFoundException {
+		List<Cliente> clientes = repository.findByNome(nome);
+		if(clientes!=null&& clientes.size()>0){
+			return ResponseEntity.ok().body(clientes);
+		}else{
+			return ResponseEntity.notFound().build();
+		}
+
+	}
 }
