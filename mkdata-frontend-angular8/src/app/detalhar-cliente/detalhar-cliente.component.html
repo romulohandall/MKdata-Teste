@@ -1,16 +1,29 @@
-<h2>Employee Details</h2>
+<h2>Detalhar Cliente</h2>
 
 <hr/>
 <div *ngIf="cliente">
   <div>
-    <label><b>Nome: </b></label> {{cliente.firstName}}
+    <label><b>Nome: </b></label> {{cliente.nome}}
   </div>
   <div>
-    <label><b>Tipo: </b></label> {{cliente.lastName}}
+    <label><b>Tipo: </b></label> {{cliente.tipo}}
   </div>
   <div>
-    <label><b>Email Id: </b></label> {{cliente.emailId}}
+    <label><b>CPF: </b></label> {{cliente.nuCpf}}
   </div>
+
+  <div>
+    <label><b>RG: </b></label> {{cliente.nuRg}}
+  </div>
+
+  <div>
+    <label><b>E-Mail: </b></label> {{cliente.email}}
+  </div>
+
+  <div>
+    <label><b>Ativo: </b></label> {{cliente.stAtivo}}
+  </div>
+
 </div>
 
 <br>

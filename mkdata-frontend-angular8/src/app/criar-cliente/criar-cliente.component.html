@@ -2,18 +2,32 @@
 <div [hidden]="submitted" style="width: 400px;">
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label>First Name</label>
-      <input type="text" class="form-control" id="firstName" required [(ngModel)]="cliente.firstName" name="firstName">
+      <label>Nome</label>
+      <input type="text" class="form-control" id="nome" required [(ngModel)]="cliente.nome" name="nome">
     </div>
 
     <div class="form-group">
-      <label>Last Name</label>
-      <input type="text" class="form-control" id="lastName" required [(ngModel)]="cliente.lastName" name="lastName">
+      <label>Tipo</label>
+      <input type="text" class="form-control" id="tipo" required [(ngModel)]="cliente.tipo" name="tipo">
+    </div>
+
+    <div class="form-group">
+      <label>CPF</label>
+      <input type="text" class="form-control" id="nuCpf" required [(ngModel)]="cliente.nuCpf" name="nuCpf">
+    </div>
+
+    <div class="form-group">
+      <label>RG</label>
+      <input type="text" class="form-control" id="nuRg" required [(ngModel)]="cliente.nuRg" name="nuRg">
     </div>
 
     <div class="form-group">
       <label>E-mail</label>
-      <input type="text" class="form-control" id="emailId" required [(ngModel)]="cliente.emailId" name="emailId">
+      <input type="text" class="form-control" id="email" required [(ngModel)]="cliente.email" name="email">
+    </div>
+
+    <div class="form-group">
+      <input type="checkbox" id="stAtivo"  checked="checked"  required [(ngModel)]="cliente.stAtivo" name="stAtivo">&nbsp;Ativo<br>
     </div>
 
     <button type="submit" class="btn btn-success">Salvar</button>
@@ -22,5 +36,5 @@
 
 <div [hidden]="!submitted">
   <h4>Dados enviados com sucesso!</h4>
-  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+  <!-- <button class="btn btn-success" (click)="novoCliente()">Add</button> -->
 </div>

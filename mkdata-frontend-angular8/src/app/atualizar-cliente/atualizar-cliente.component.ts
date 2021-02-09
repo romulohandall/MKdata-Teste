@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from '../cliente.service';
 
 @Component({
-  selector: 'app-update-employee',
+  selector: 'app-atualizar-cliente',
   templateUrl: './atualizar-cliente.component.html',
   styleUrls: ['./atualizar-cliente.component.css']
 })

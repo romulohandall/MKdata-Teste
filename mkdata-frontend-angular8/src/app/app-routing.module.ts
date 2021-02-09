@@ -8,7 +8,7 @@ import { DetalharClienteComponent } from './detalhar-cliente/detalhar-cliente.co
 
 const routes: Routes = [
 
-  { path: '', redirectTo: 'employee', pathMatch: 'full' },
+  { path: '', redirectTo: 'cliente', pathMatch: 'full' },
   { path: 'clientes', component: ListarClienteComponent },
   { path: 'add', component: CriarClienteComponent },
   { path: 'update/:id', component: AtualizarClienteComponent },

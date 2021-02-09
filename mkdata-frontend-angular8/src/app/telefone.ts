@@ -1,13 +1,5 @@
-export class Cliente {
+export class Telefone {
     id: number;
-    nome: string;
-    tipo: string;
-    nuCpf: number;
-    nuRg: number;
-    email: string;
-    stAtivo: boolean;
-
-
-
+    telefone: number;
 
 }

@@ -3,20 +3,26 @@
       <h2>Listar Clientes</h2>
     </div>
     <div class="panel-body">
-      <table class="table table-striped">
+      <table class="text-md-left ">
         <thead>
           <tr>
             <th>Nome</th>
             <th>Tipo</th>
+            <th>CPF</th>
+            <th>RG</th>
             <th>Email</th>
+            <th>Ativo</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let cliente of clientes | async">
-            <td>{{cliente.firstName}}</td>
-            <td>{{cliente.lastName}}</td>
-            <td>{{cliente.emailId}}</td>
+            <td>{{cliente.nome}}</td>
+            <td>{{cliente.tipo}}</td>
+            <td>{{cliente.nuCpf}}</td>
+            <td>{{cliente.nuRg}}</td>
+            <td>{{cliente.email}}</td>
+            <td>{{cliente.stAtivo?"sim":"não"}}</td>
             <td><button (click)="apagarCliente(cliente.id)" class="btn btn-danger">Apagar</button>
                 <button (click)="detalharCliente(cliente.id)" class="btn btn-info" style="margin-left: 10px">Detalhar</button>
             </td>

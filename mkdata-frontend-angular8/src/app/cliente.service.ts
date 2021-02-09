@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ClienteService {
-  private baseUrl = 'http://localhost:8080/springboot-crud-rest/api/v1/clientes';
+  private baseUrl = 'http://localhost:8080/mkdata-rest/api/v1/clientes';
 
   constructor(private http: HttpClient) { }
 

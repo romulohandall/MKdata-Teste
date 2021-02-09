@@ -19,7 +19,7 @@ export class CriarClienteComponent implements OnInit {
   ngOnInit() {
   }
 
-  newEmployee(): void {
+  novoCliente(): void {
     this.submitted = false;
     this.cliente = new Cliente();
   }

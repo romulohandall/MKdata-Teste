@@ -1,7 +1,16 @@
+import {Telefone} from "./telefone";
+
 export class Cliente {
     id: number;
-    firstName: string;
-    lastName: string;
-    emailId: string;
-    active: boolean;
+    nome: string;
+    tipo: string;
+    nuCpf: number;
+    nuRg: number;
+    email: string;
+    stAtivo: boolean;
+    telefones: Telefone[];
+
+
+
+
 }
