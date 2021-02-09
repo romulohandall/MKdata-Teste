@@ -28,7 +28,9 @@
             <td>{{cliente.email}}</td>
             <td>{{cliente.stAtivo?"sim":"não"}}</td>
             <td><button (click)="apagarCliente(cliente.id)" class="btn btn-danger">Apagar</button>
-                <button (click)="detalharCliente(cliente.id)" class="btn btn-info" style="margin-left: 10px">Detalhar</button>
+              <button (click)="editarCliente(cliente.id)" class="btn btn-info" style="margin-left: 10px">Editar</button>
+               <button (click)="detalharCliente(cliente.id)" class="btn btn-info" style="margin-left: 10px">Detalhar</button>
+
             </td>
           </tr>
         </tbody>

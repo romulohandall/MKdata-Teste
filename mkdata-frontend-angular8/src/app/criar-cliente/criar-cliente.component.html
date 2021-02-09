@@ -1,6 +1,9 @@
 <h3>Cadastrar Cliente</h3>
+<div [hidden]="!clienteJaExiste">
+  <h4>CPF já existe na base de dados.</h4>
+</div>
 <div [hidden]="submitted" style="width: 400px;">
-  <form (ngSubmit)="onSubmit()">
+  <form >
     <div class="form-group">
       <label>Nome</label>
       <input type="text" class="form-control" id="nome" required [(ngModel)]="cliente.nome" name="nome">
@@ -30,11 +33,9 @@
       <input type="checkbox" id="stAtivo"  checked="checked"  required [(ngModel)]="cliente.stAtivo" name="stAtivo">&nbsp;Ativo<br>
     </div>
 
-    <button type="submit" class="btn btn-success">Salvar</button>
+    <button (click)="save()"  class="btn btn-success">Salvar</button>
   </form>
 </div>
 
-<div [hidden]="!submitted">
-  <h4>Dados enviados com sucesso!</h4>
-  <!-- <button class="btn btn-success" (click)="novoCliente()">Add</button> -->
-</div>
+
+

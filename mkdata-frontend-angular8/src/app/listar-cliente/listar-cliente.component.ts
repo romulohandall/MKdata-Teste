@@ -39,9 +39,13 @@ export class ListarClienteComponent implements OnInit {
   detalharCliente(id: number){
     this.router.navigate(['details', id]);
   }
+
+  editarCliente(id: number){
+    this.router.navigate(['update', id]);
+  }
+
   pesquisarPorNome(){
-    this.service.pesquisarPorNome(this.nome).subscribe(data =>{
-      this.clientes = data;
-    })
+    this.clientes = this.service.pesquisarPorNome(this.nome);
+
   }
 }
