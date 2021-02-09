@@ -45,7 +45,7 @@ public class ClienteController {
 	}
 
 	@PostMapping("/clientes")
-	public Cliente createEmployee(@Valid @RequestBody Cliente cliente) {
+	public Cliente criarCliente(@Valid @RequestBody Cliente cliente) {
 
 		return repository.save(cliente);
 	}

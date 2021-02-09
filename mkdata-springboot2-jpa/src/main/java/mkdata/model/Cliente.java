@@ -3,6 +3,7 @@ package mkdata.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -14,27 +15,28 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Cliente {
+public class Cliente implements Serializable {
 
 	@Id
 	@Column(name = "id_cliente")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@Column(name = "nome", nullable = false)
+	@Column(name = "nome", nullable = true)
 	private String nome;
-	@Column(name = "tipo", nullable = false)
+	@Column(name = "tipo", nullable = true)
 	private String tipo;
-	@Column(name = "nu_Cpf", nullable = false)
-	private Integer nuCpf;
-	@Column(name = "nu_Rg", nullable = false)
-	private Integer nuRg;
-	@Column(name = "data_Cadastro", nullable = false)
+	@Column(name = "nu_Cpf", nullable = true)
+	private Long nuCpf;
+	@Column(name = "nu_Rg", nullable = true)
+	private Long nuRg;
+	@Column(name = "data_Cadastro", nullable = true)
 	private Timestamp dataCadastro;
-	@Column(name = "ativo", nullable = false)
+	@Column(name = "ativo", nullable = true)
 	private boolean stAtivo;
-	@Column(name = "email", nullable = false)
+	@Column(name = "email", nullable = true)
 	private String email;
+	//@Transient
 	@OneToMany(mappedBy = "cliente")
 	private List<Telefone> telefones ;
 
