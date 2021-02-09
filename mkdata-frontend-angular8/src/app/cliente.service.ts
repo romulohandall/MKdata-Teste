@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 export class ClienteService {
   private baseUrl = 'http://localhost:8080/mkdata-rest/api/v1/clientes';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getCliente(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
@@ -23,10 +24,15 @@ export class ClienteService {
   }
 
   deletarCliente(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+    return this.http.delete(`${this.baseUrl}/${id}`, {responseType: 'text'});
   }
 
   getClientesLista(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
+
+  pesquisarPorNome(nome: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/nome/${nome}`);
+  }
+
 }

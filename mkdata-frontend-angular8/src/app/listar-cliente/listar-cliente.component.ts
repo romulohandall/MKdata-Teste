@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class ListarClienteComponent implements OnInit {
 
   clientes: Observable<Cliente[]>;
+  nome: any;
 
   constructor(private service: ClienteService,
     private router: Router) {}
@@ -37,5 +38,10 @@ export class ListarClienteComponent implements OnInit {
 
   detalharCliente(id: number){
     this.router.navigate(['details', id]);
+  }
+  pesquisarPorNome(){
+    this.service.pesquisarPorNome(this.nome).subscribe(data =>{
+      this.clientes = data;
+    })
   }
 }
