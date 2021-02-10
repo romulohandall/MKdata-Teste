@@ -19,15 +19,14 @@ public class Telefone {
 	@Id
 	@Column(name = "id_telefone")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "id_cliente")
-	@JsonIgnore
 	private Cliente cliente;
 
-	@Column(name = "nome", nullable = false)
-	private Integer telefone;
+	@Column(name = "telefone", nullable = false)
+	private long telefone;
 
 
 	@Override

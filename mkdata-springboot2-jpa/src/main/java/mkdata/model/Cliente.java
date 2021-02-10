@@ -20,7 +20,7 @@ public class Cliente implements Serializable {
 	@Id
 	@Column(name = "id_cliente")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 
 	@Column(name = "nome", nullable = true)
 	private String nome;
@@ -36,21 +36,9 @@ public class Cliente implements Serializable {
 	private boolean stAtivo;
 	@Column(name = "email", nullable = true)
 	private String email;
-	//@Transient
-	@OneToMany(mappedBy = "cliente")
+
+	@OneToMany(mappedBy = "cliente", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	private List<Telefone> telefones ;
-
-	
-
-	
-
-
-	
-
-	
-
-
-
 
 	@Override
 	public String toString() {
