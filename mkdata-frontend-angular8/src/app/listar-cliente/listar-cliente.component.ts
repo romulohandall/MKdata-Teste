@@ -24,6 +24,7 @@ export class ListarClienteComponent implements OnInit {
 
   reloadData() {
     this.clientes = this.service.getClientesLista();
+    console.log(this.clientes);
   }
 
   apagarCliente(id: number) {

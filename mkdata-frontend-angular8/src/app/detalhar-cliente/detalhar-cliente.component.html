@@ -26,6 +26,23 @@
 
 </div>
 
+<div class="panel-body">
+  <table class="text-md-left ">
+    <thead>
+    <tr>
+      <th>Contatos Adicionados</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let telefone of cliente.telefones">
+      <td>{{telefone.telefone}}</td>
+
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+
 <br>
 <br>
 <button (click)="list()" class="btn btn-primary">Voltar para lista de clientes.</button><br>

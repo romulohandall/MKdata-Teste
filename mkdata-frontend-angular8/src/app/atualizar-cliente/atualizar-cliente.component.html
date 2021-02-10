@@ -32,6 +32,29 @@
      <input type="checkbox"  id="stAtivo"  checked="checked"  required [(ngModel)]="cliente.stAtivo" name="stAtivo">&nbsp;Ativo
     </div>
 
+    <div class="form-group">
+      <label>Telefone: &nbsp;</label>
+      <input type="text"  id="telefone" required [(ngModel)]="telefone.telefone" name="telefone">
+      <button (click)="adicionarTelefone(telefone)" class="btn btn-success" style="margin-left: 10px">Adicionar</button>
+    </div>
+    <div class="panel-body">
+      <table class="text-md-left ">
+        <thead>
+        <tr>
+          <th>Contatos Adicionados</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let telefone of cliente.telefones">
+          <td>{{telefone.telefone}}</td>
+          <td><button (click)="apagarTelefone(telefone.id)" class="btn btn-danger">Apagar</button></td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <BR/>
     <button type="submit" class="btn btn-success">Atualizar</button>
   </form>
 </div>

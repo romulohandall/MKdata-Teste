@@ -27,6 +27,7 @@ export class DetalharClienteComponent implements OnInit {
       .subscribe(data => {
         console.log(data)
         this.cliente = data;
+        console.log(data);
       }, error => console.log(error));
   }
 
